@@ -27,7 +27,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -48,14 +48,14 @@ class BeerOrderServiceImplTest extends BaseServiceTest {
         BeerOrderPagedList pagedList = beerOrderService.listOrders(testCustomer.getId(), PageRequest.of(0, 25));
 
         assertThat(pagedList.getTotalElements()).isGreaterThanOrEqualTo(3L);
-        assertThat(pagedList.getContent().size()).isGreaterThanOrEqualTo(3);
+        assertThat(pagedList.getContent()).hasSizeGreaterThanOrEqualTo(3);
     }
 
     @Test
     void placeOrder() {
         BeerOrderDto dto = BeerOrderDto.builder()
                 .orderStatusCallbackUrl("http://foo.com")
-                .beerOrderLines(Arrays.asList(BeerOrderLineDto
+                .beerOrderLines(List.of(BeerOrderLineDto
                         .builder().beerId(testBeerGalaxy.getId()).orderQuantity(12).build()))
                 .build();
 

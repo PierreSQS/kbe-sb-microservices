@@ -85,7 +85,7 @@ class BeerControllerTest {
 
     @DisplayName("List Ops - ")
     @Nested
-    public class TestListOperations {
+    class TestListOperations {
 
         @Captor
         ArgumentCaptor<String> beerNameCaptor;
@@ -132,8 +132,8 @@ class BeerControllerTest {
                     .andExpect(openApi().isValid(OAC_SPEC));
 
             then(beerService).should().listBeers(isNull(), isNull(), any(PageRequest.class), anyBoolean());
-            assertThat(0).isEqualTo(pageRequestCaptor.getValue().getPageNumber());
-            assertThat(25).isEqualTo(pageRequestCaptor.getValue().getPageSize());
+            assertThat(pageRequestCaptor.getValue().getPageNumber()).isZero();
+            assertThat(pageRequestCaptor.getValue().getPageSize()).isEqualTo(25);
         }
 
         @DisplayName("Test Page Size Param")
@@ -147,8 +147,8 @@ class BeerControllerTest {
                     .andExpect(openApi().isValid(OAC_SPEC));
 
             then(beerService).should().listBeers(isNull(), isNull(), any(PageRequest.class), anyBoolean());
-            assertThat(0).isEqualTo(pageRequestCaptor.getValue().getPageNumber());
-            assertThat(200).isEqualTo(pageRequestCaptor.getValue().getPageSize());
+            assertThat(pageRequestCaptor.getValue().getPageNumber()).isZero();
+            assertThat(pageRequestCaptor.getValue().getPageSize()).isEqualTo(200);
         }
 
         @DisplayName("Test Page Param")
@@ -162,8 +162,8 @@ class BeerControllerTest {
                     .andExpect(openApi().isValid(OAC_SPEC));
 
             then(beerService).should().listBeers(isNull(), isNull(), any(PageRequest.class), anyBoolean());
-            assertThat(0).isEqualTo(pageRequestCaptor.getValue().getPageNumber());
-            assertThat(200).isEqualTo(pageRequestCaptor.getValue().getPageSize());
+            assertThat(pageRequestCaptor.getValue().getPageNumber()).isZero();
+            assertThat(pageRequestCaptor.getValue().getPageSize()).isEqualTo(200);
         }
 
         @DisplayName("Test Beer Name Param")
@@ -177,9 +177,9 @@ class BeerControllerTest {
                     .andExpect(openApi().isValid(OAC_SPEC));
 
             then(beerService).should().listBeers(anyString(), isNull(), any(PageRequest.class), anyBoolean());
-            assertThat(0).isEqualTo(pageRequestCaptor.getValue().getPageNumber());
-            assertThat(25).isEqualTo(pageRequestCaptor.getValue().getPageSize());
-            assertThat(GALAXY_CAT).isEqualToIgnoringCase(beerNameCaptor.getValue());
+            assertThat(pageRequestCaptor.getValue().getPageNumber()).isZero();
+            assertThat(pageRequestCaptor.getValue().getPageSize()).isEqualTo(25);
+            assertThat(beerNameCaptor.getValue()).isEqualToIgnoringCase(GALAXY_CAT);
         }
 
         @DisplayName("Test Beer Style Param")
@@ -193,9 +193,9 @@ class BeerControllerTest {
                     .andExpect(openApi().isValid(OAC_SPEC));
 
             then(beerService).should().listBeers(isNull(), any(BeerStyleEnum.class), any(PageRequest.class), anyBoolean());
-            assertThat(0).isEqualTo(pageRequestCaptor.getValue().getPageNumber());
-            assertThat(25).isEqualTo(pageRequestCaptor.getValue().getPageSize());
-            assertThat(BeerStyleEnum.IPA).isEqualTo(beerStyleEnumCaptor.getValue());
+            assertThat(pageRequestCaptor.getValue().getPageNumber()).isZero();
+            assertThat(pageRequestCaptor.getValue().getPageSize()).isEqualTo(25);
+            assertThat(beerStyleEnumCaptor.getValue()).isEqualTo(BeerStyleEnum.IPA);
         }
     }
 
@@ -216,7 +216,7 @@ class BeerControllerTest {
 
     @DisplayName("Save Ops - ")
     @Nested
-    public class TestSaveOperations {
+    class TestSaveOperations {
         @Test
         void testSaveNewBeer() throws Exception {
             //given
@@ -250,13 +250,13 @@ class BeerControllerTest {
                     .content(beerDtoJson))
                     .andExpect(status().isBadRequest());
 
-            then(beerService).shouldHaveZeroInteractions();
+            then(beerService).shouldHaveNoInteractions();
         }
     }
 
     @DisplayName("Save Ops - ")
     @Nested
-    public class TestUpdateOperations {
+    class TestUpdateOperations {
 
         @Test
         void testUpdateBeer() throws Exception {
@@ -286,7 +286,7 @@ class BeerControllerTest {
                     .content(beerDtoJson))
                     .andExpect(status().isBadRequest());
 
-            then(beerService).shouldHaveZeroInteractions();
+            then(beerService).shouldHaveNoInteractions();
         }
     }
 }

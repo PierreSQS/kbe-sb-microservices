@@ -8,7 +8,6 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 import java.time.OffsetDateTime;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,8 +18,8 @@ import java.util.UUID;
 public class InventoryHandler {
     public Mono<ServerResponse> listInventory(ServerRequest request){
         return ServerResponse.ok()
-                .contentType(MediaType.APPLICATION_STREAM_JSON)
-                .body(Mono.just(Arrays.asList(
+                .contentType(MediaType.APPLICATION_NDJSON)
+                .body(Mono.just(List.of(
                         BeerInventoryDto.builder()
                                 .id(UUID.randomUUID())
                                 .beerId(UUID.fromString("00000000-0000-0000-0000-000000000000"))

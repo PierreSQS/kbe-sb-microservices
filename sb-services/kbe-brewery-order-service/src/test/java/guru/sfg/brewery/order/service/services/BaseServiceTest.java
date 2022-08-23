@@ -96,9 +96,7 @@ public abstract class BaseServiceTest {
                 .beerOrderLines(orderLines1)
                 .build());
 
-        orderLines1.forEach(line -> {
-            line.setBeerOrder(testOrder1);
-        });
+        orderLines1.forEach(line -> line.setBeerOrder(testOrder1));
 
         beerOrderRepository.save(testOrder1);
 
@@ -116,9 +114,7 @@ public abstract class BaseServiceTest {
                 .beerOrderLines(orderLines2)
                 .build());
 
-        orderLines2.forEach(line -> {
-            line.setBeerOrder(testOrder2);
-        });
+        orderLines2.forEach(line -> line.setBeerOrder(testOrder2));
 
         beerOrderRepository.save(testOrder2);
 
@@ -136,9 +132,7 @@ public abstract class BaseServiceTest {
                 .beerOrderLines(orderLines3)
                 .build());
 
-        orderLines3.forEach(line -> {
-            line.setBeerOrder(testOrder3);
-        });
+        orderLines3.forEach(line -> line.setBeerOrder(testOrder3));
 
         beerOrderRepository.saveAndFlush(testOrder3);
     }

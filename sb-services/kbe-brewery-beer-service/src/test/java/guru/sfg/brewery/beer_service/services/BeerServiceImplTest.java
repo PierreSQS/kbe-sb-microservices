@@ -77,7 +77,7 @@ class BeerServiceImplTest {
 
     @DisplayName("List Ops - ")
     @Nested
-    public class TestListOptions {
+    class TestListOptions {
         private List<Beer> beerList;
         private PageImpl<Beer> beerPage;
 
@@ -104,7 +104,7 @@ class BeerServiceImplTest {
                     PageRequest.of(1, 25), false);
 
             //then
-            assertThat(2).isEqualTo(beerPagedList.getContent().size());
+            assertThat(beerPagedList.getContent()).hasSize(2);
         }
 
         @DisplayName("Test Find By Name Only")
@@ -118,7 +118,7 @@ class BeerServiceImplTest {
                     PageRequest.of(1, 25), false);
 
             //then
-            assertThat(2).isEqualTo(beerPagedList.getContent().size());
+            assertThat(beerPagedList.getContent()).hasSize(2);
         }
 
         @DisplayName("Test Find By Style Only")
@@ -132,7 +132,7 @@ class BeerServiceImplTest {
                     PageRequest.of(1, 25), false);
 
             //then
-            assertThat(2).isEqualTo(beerPagedList.getContent().size());
+            assertThat(beerPagedList.getContent()).hasSize(2);
         }
 
         @DisplayName("Test Find All")
@@ -146,7 +146,7 @@ class BeerServiceImplTest {
                     PageRequest.of(1, 25), false);
 
             //then
-            assertThat(2).isEqualTo(beerPagedList.getContent().size());
+            assertThat(beerPagedList.getContent()).hasSize(2);
         }
     }
 
