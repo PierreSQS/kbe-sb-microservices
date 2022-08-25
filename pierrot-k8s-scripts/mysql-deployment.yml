@@ -18,12 +18,12 @@ spec:
         app: mysql
     spec:
       containers:
-      - image: mysql:8.27
+      - image: mysql:latest
         name: mysql
         resources: {}
-      env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: dbpassword
-        - name: MYSQL_DATABASE
-          value: beerservice
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: dbpassword
+          - name: MYSQL_DATABASE
+            value: beerservice
 status: {}
