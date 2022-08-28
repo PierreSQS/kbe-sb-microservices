@@ -12,7 +12,7 @@ spec:
     protocol: TCP
     targetPort: 8083
   selector:
-    app: inventory-failover-svc
+    app: inventory-failover
   type: ClusterIP
 status:
   loadBalancer: {}
