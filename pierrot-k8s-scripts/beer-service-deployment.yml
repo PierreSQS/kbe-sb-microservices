@@ -32,4 +32,6 @@ spec:
             value: jdbc:mysql://mysql-service:3308/beerservice?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
           - name: SPRING_ARTEMIS_HOST
             value: jms
+          - name: SFG_BREWERY_BEER-INVENTORY-SERVICE-HOST
+            value: http://inventory-service:8082
 status: {}
