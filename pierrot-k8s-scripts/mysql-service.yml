@@ -11,8 +11,9 @@ spec:
     port: 3308
     protocol: TCP
     targetPort: 3306
+    nodePort: 30308
   selector:
     app: mysql
-  type: ClusterIP
+  type: NodePort
 status:
   loadBalancer: {}
