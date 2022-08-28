@@ -34,4 +34,18 @@ spec:
             value: jms
           - name: SFG_BREWERY_BEER-SERVICE-HOST
             value: http://beer-service:8080
+          - name: MANAGEMENT_ENDPOINT_HEALTH_PROBES_ENABLED
+            value: "true"
+          - name: MANAGEMENT_HEALTH_READINESSTATE_ENABLED
+            value: "true"
+          - name: MANAGEMENT_HEALTH_LIVENESSSTATE_ENABLED
+            value: "true"
+        readinessProbe:
+          httpGet:
+            port: 8081
+            path: /actuator/health/readiness
+        livenessProbe:
+          httpGet:
+            port: 8081
+            path: /actuator/health/liveness
 status: {}
