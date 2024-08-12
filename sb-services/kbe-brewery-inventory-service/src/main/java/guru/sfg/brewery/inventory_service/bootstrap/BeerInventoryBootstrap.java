@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.UUID;
 
 /**
- * Created by jt on 2019-06-07.
+ * Modified by Pierrot on 2024-08-12.
  */
 @Slf4j
 @RequiredArgsConstructor
@@ -26,7 +26,7 @@ public class BeerInventoryBootstrap implements CommandLineRunner {
     private final BeerInventoryRepository beerInventoryRepository;
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         if(beerInventoryRepository.count() == 0){
             loadInitialInv();
         }

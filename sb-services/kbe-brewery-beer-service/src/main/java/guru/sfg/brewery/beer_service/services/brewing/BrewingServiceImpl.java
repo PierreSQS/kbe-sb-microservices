@@ -12,11 +12,11 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 import java.util.List;
 
 /**
- * Created by jt on 2019-06-23.
+ * Modified by Pierrot on 2024-08-12.
  */
 @Slf4j
 @Service

@@ -27,9 +27,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+
 
 /**
- * Created by jt on 2019-01-26.
+ * Modified by Pierrot on 2024-08-12.
  */
 @Slf4j
 @Component
@@ -52,13 +54,13 @@ public class DefaultBreweryLoader implements CommandLineRunner {
 
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         log.debug("Initializing Data");
 
         loadBreweryData();
         loadBeerData();
 
-        cacheManager.getCache("beerListCache").clear();
+        Objects.requireNonNull(cacheManager.getCache("beerListCache")).clear();
         log.debug("Data Initialized. Beer Records loaded {}", beerRepository.count());
     }
 
