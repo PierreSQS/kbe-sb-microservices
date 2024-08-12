@@ -1,6 +1,7 @@
 package guru.sfg.brewery.beer_service.services.inventory;
 
 import guru.sfg.brewery.model.BeerInventoryDto;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -17,23 +18,19 @@ import java.util.Objects;
 import java.util.UUID;
 
 /**
- * Created by jt on 2019-06-07.
+ * Modified by Pierrot on 2024-08-13.
  */
 @Profile("!local-discovery & !digitalocean")
 @Slf4j
-@ConfigurationProperties(prefix = "sfg.brewery", ignoreUnknownFields = true)
+@ConfigurationProperties(prefix = "sfg.brewery")
 @Component
 public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryService {
 
     public static final String INVENTORY_PATH = "/api/v1/beer/{beerId}/inventory";
     private final RestTemplate restTemplate;
 
+    @Setter
     private String beerInventoryServiceHost;
-
-
-    public void setBeerInventoryServiceHost(String beerInventoryServiceHost) {
-        this.beerInventoryServiceHost = beerInventoryServiceHost;
-    }
 
 
     public BeerInventoryServiceRestTemplateImpl(RestTemplateBuilder restTemplateBuilder, @Value("${sfg.brewery.inventory-user}") String inventoryUser,
@@ -44,7 +41,7 @@ public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryServic
     @Override
     public Integer getOnhandInventory(UUID beerId) {
 
-        log.debug("Calling Inventory Service - BeerId: " + beerId);
+        log.debug("Calling Inventory Service - BeerId: {}", beerId);
 
         ResponseEntity<List<BeerInventoryDto>> responseEntity = restTemplate
                 .exchange(beerInventoryServiceHost + INVENTORY_PATH, HttpMethod.GET, null,
@@ -56,7 +53,7 @@ public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryServic
                 .mapToInt(BeerInventoryDto::getQuantityOnHand)
                 .sum();
 
-        log.debug("BeerId: " + beerId + " On hand is: " + onHand);
+        log.debug("BeerId: {} On hand is: {}", beerId, onHand);
 
         return onHand;
     }

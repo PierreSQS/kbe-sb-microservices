@@ -12,7 +12,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 /**
- * Created by jt on 3/4/20.
+ * Modified by Pierrot on 2024-08-13.
  */
 @Slf4j
 @RequiredArgsConstructor
@@ -23,14 +23,14 @@ public class BeerInventoryServiceFeign implements BeerInventoryService {
 
     @Override
     public Integer getOnhandInventory(UUID beerId) {
-        log.debug("Calling Inventory Service w/Feign - BeerId: " + beerId);
+        log.debug("Calling Inventory Service w/Feign - BeerId: {}", beerId);
 
         int onHand = 0;
 
         try {
             ResponseEntity<List<BeerInventoryDto>> responseEntity = inventoryServiceFeignClient.getOnhandInventory(beerId);
 
-            if (responseEntity.getBody() != null && responseEntity.getBody().size() > 0) {
+            if (responseEntity.getBody() != null && !responseEntity.getBody().isEmpty()) {
                 log.debug("Inventory found, summing inventory");
 
                 onHand = Objects.requireNonNull(responseEntity.getBody())
@@ -43,7 +43,7 @@ public class BeerInventoryServiceFeign implements BeerInventoryService {
             throw e;
         }
 
-        log.debug("BeerId: " + beerId + " On hand is: " + onHand);
+        log.debug("BeerId: {} On hand is: {}", beerId, onHand);
 
         return onHand;
     }

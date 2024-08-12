@@ -36,7 +36,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -73,7 +72,7 @@ public class BeerServiceImpl implements BeerService {
                     .getContent()
                     .stream()
                     .map(beerMapper::beerToBeerDtoWithInventory)
-                    .collect(Collectors.toList()),
+                    .toList(),
                     PageRequest
                             .of(beerPage.getPageable().getPageNumber(),
                                     beerPage.getPageable().getPageSize()),
@@ -84,7 +83,7 @@ public class BeerServiceImpl implements BeerService {
                     .getContent()
                     .stream()
                     .map(beerMapper::beerToBeerDto)
-                    .collect(Collectors.toList()),
+                    .toList(),
                     PageRequest
                             .of(beerPage.getPageable().getPageNumber(),
                                     beerPage.getPageable().getPageSize()),
@@ -97,12 +96,12 @@ public class BeerServiceImpl implements BeerService {
     @Override
     public BeerDto findBeerById(UUID beerId, Boolean showInventoryOnHand) {
 
-        log.debug("Finding Beer by id: " + beerId);
+        log.debug("Finding Beer by id: {}", beerId);
 
         Optional<Beer> beerOptional = beerRepository.findById(beerId);
 
         if (beerOptional.isPresent()) {
-            log.debug("Found BeerId: " + beerId);
+            log.debug("Found BeerId: {}", beerId);
             if(Boolean.TRUE.equals(showInventoryOnHand)) {
                 return beerMapper.beerToBeerDtoWithInventory(beerOptional.get());
             } else {
