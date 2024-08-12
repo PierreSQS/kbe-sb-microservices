@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.6</version>
+        <version>3.3.2</version>
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
 
@@ -20,12 +20,12 @@
     <packaging>pom</packaging>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>21</java.version>
         <jaxb.version>2.3.0</jaxb.version>
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
         <org.projectlombok.version>1.18.20</org.projectlombok.version>
         <swagger-request-validator.version>2.15.1</swagger-request-validator.version>
-        <spring-cloud.version>2020.0.2</spring-cloud.version>
+        <spring-cloud.version>2023.0.3</spring-cloud.version>
         <logstash.logback.version>6.3</logstash.logback.version>
         <docker.image.prefix>springframeworkguru</docker.image.prefix>
         <docker.image.name>${project.artifactId}</docker.image.name>
@@ -38,12 +38,6 @@
     </modules>
 
     <repositories>
-        <!--        Needed for Spring Milestone Releases-->
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-        </repository>
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
