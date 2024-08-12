@@ -14,7 +14,7 @@
     <description>KBE Brewery Gateway</description>
 
     <properties>
-        <spring-cloud.version>2020.0.2</spring-cloud.version>
+        <spring-cloud.version>2023.0.3</spring-cloud.version>
         <docker.skip>false</docker.skip>
     </properties>
 
@@ -37,10 +37,6 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-sleuth</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
         <dependency>
@@ -60,12 +56,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 
