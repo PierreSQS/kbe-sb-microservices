@@ -1,10 +1,11 @@
-package guru.sfg.brewery.model.events;
+package guru.sfg.brewery.beer_service.model.events;
 
-import guru.sfg.brewery.model.BeerOrderDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.UUID;
 
 /**
  * Created by jt on 2019-09-08.
@@ -13,6 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ValidateBeerOrderRequest {
-    private BeerOrderDto beerOrder;
+public class BeerOrderValidationResult {
+    private Boolean isValid;
+    private UUID beerOrderId;
 }

@@ -20,7 +20,7 @@ import guru.sfg.brewery.beer_service.domain.Beer;
 import guru.sfg.brewery.beer_service.domain.Brewery;
 import guru.sfg.brewery.beer_service.repositories.BeerRepository;
 import guru.sfg.brewery.beer_service.repositories.BreweryRepository;
-import guru.sfg.brewery.model.BeerStyleEnum;
+import guru.sfg.brewery.beer_service.model.BeerStyleEnum;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;

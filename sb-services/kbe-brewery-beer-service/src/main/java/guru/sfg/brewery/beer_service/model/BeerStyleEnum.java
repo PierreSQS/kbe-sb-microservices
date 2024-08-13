@@ -15,16 +15,8 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package guru.sfg.brewery.beer_service;
+package guru.sfg.brewery.beer_service.model;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-
-@EnableFeignClients //needs to be on SBA class
-@SpringBootApplication
-public class BeerServiceApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(BeerServiceApplication.class, args);
-    }
+public enum BeerStyleEnum {
+    LAGER, PILSNER, STOUT, GOSE, PORTER, ALE, WHEAT, IPA, PALE_ALE, SAISON
 }

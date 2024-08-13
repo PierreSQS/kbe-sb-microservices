@@ -15,19 +15,16 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package guru.sfg.brewery.model;
+package guru.sfg.brewery;
 
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
-import java.util.List;
-
-public class BeerOrderPagedList extends PageImpl<BeerOrderDto> {
-    public BeerOrderPagedList(List<BeerOrderDto> content, Pageable pageable, long total) {
-        super(content, pageable, total);
-    }
-
-    public BeerOrderPagedList(List<BeerOrderDto> content) {
-        super(content);
+@EnableFeignClients //needs to be on SBA class
+@SpringBootApplication
+public class BeerServiceApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(BeerServiceApplication.class, args);
     }
 }

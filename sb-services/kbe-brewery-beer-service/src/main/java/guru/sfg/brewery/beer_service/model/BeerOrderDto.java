@@ -15,7 +15,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package guru.sfg.brewery.model;
+package guru.sfg.brewery.beer_service.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,53 +24,32 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Null;
-
-import java.io.Serial;
-import java.io.Serializable;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BeerDto implements Serializable {
+public class BeerOrderDto {
 
-    @Serial
-    private static final long serialVersionUID = -937389939645639188L;
-
-    @Null
+    @JsonProperty("id")
     private UUID id = null;
 
-    @Null
+    @JsonProperty("version")
     private Integer version = null;
 
-    @Null
     @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ssZ", shape=JsonFormat.Shape.STRING)
     @JsonProperty("createdDate")
     private OffsetDateTime createdDate = null;
 
-    @Null
     @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ssZ", shape=JsonFormat.Shape.STRING)
+    @JsonProperty("lastModifiedDate")
     private OffsetDateTime lastModifiedDate = null;
-
-    @NotBlank
-    private String beerName;
-
-    @NotNull
-    private BeerStyleEnum beerStyle;
-
-    @NotNull
-    private String upc;
-
-    private Integer quantityOnHand;
-
-    @NotNull
-    @JsonFormat(shape= JsonFormat.Shape.STRING)
-    private BigDecimal price;
-
+    private UUID customerId;
+    private String customerRef;
+    private List<BeerOrderLineDto> beerOrderLines;
+    private String orderStatus;
+    private String orderStatusCallbackUrl;
 }

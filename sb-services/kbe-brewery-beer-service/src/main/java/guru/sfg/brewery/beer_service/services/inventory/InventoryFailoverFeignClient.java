@@ -1,6 +1,6 @@
 package guru.sfg.brewery.beer_service.services.inventory;
 
-import guru.sfg.brewery.model.BeerInventoryDto;
+import guru.sfg.brewery.beer_service.model.BeerInventoryDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

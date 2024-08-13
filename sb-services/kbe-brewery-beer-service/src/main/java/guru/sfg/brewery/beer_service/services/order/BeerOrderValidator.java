@@ -1,7 +1,7 @@
 package guru.sfg.brewery.beer_service.services.order;
 
 import guru.sfg.brewery.beer_service.repositories.BeerRepository;
-import guru.sfg.brewery.model.BeerOrderDto;
+import guru.sfg.brewery.beer_service.model.BeerOrderDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

@@ -1,6 +1,6 @@
 package guru.sfg.brewery.beer_service.services.inventory;
 
-import guru.sfg.brewery.model.BeerInventoryDto;
+import guru.sfg.brewery.beer_service.model.BeerInventoryDto;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
